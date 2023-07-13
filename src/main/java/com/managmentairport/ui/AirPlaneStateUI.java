@@ -28,7 +28,6 @@ public class AirPlaneStateUI {
   }
 
   public static boolean checkValidId(int id) {
-    boolean x = (id >= 0 && id < DashboardUI.aipsservices.findAll().size())?true:false;
-    return x;
+    return (id >= 0 && id < DashboardUI.aipsservices.findAll().size());
   }
 }
