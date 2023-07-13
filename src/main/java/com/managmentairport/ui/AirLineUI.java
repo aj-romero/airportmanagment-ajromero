@@ -13,11 +13,8 @@ public class AirLineUI {
   }
 
   public static boolean checkValidId(int id) {
-    if (id >= 0 && id < DashboardUI.aiservice.findAll().size()) {
-      return true;
-    } else {
-      return false;
-    }
+    boolean x = (id >= 0 && id < DashboardUI.aiservice.findAll().size())? true: false;
+    return x;
   }
 
   public static AirLine selectAirline() {
