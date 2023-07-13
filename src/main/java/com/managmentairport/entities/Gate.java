@@ -7,5 +7,5 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class Gate {
-    private String gateName;
+  private String gateName;
 }

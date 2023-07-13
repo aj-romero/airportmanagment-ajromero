@@ -10,5 +10,5 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class AirLine {
-    private String airLineName;
+  private String airLineName;
 }

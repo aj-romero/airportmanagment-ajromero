@@ -1,4 +1,5 @@
 package com.managmentairport.entities;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,5 +10,5 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class AirPlaneState {
-    private String stateName;
+  private String stateName;
 }

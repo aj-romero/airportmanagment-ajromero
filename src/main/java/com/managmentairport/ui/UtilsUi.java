@@ -4,21 +4,16 @@ import java.util.Scanner;
 
 public class UtilsUi {
 
-    public static int checkInput(Scanner es){
-        int acc = -1;
-        while(acc == -1){
-            try{
-                acc = Integer.parseInt(es.nextLine());
-            }catch (Exception e){
-                acc = -1;
-                System.out.printf("%n%n | %-15s: ", "Ingrese un numero entero positivo");
-            }
-        }
-        return acc;
+  public static int checkInput(Scanner es) {
+    int acc = -1;
+    while (acc == -1) {
+      try {
+        acc = Integer.parseInt(es.nextLine());
+      } catch (Exception e) {
+        acc = -1;
+        System.out.printf("%n%n | %-15s: ", "Ingrese un numero entero positivo");
+      }
     }
-
-    public static void cleanScreen(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
+    return acc;
+  }
 }

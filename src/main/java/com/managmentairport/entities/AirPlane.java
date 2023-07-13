@@ -8,8 +8,8 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 public class AirPlane {
-    private AirLine airLine;
-    private AirPlaneState state;
-    private String registerNumber;
-    private int capacity;
+  private AirLine airLine;
+  private AirPlaneState state;
+  private String registerNumber;
+  private int capacity;
 }
