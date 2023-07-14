@@ -20,9 +20,7 @@ public class GateUI {
   }
 
   public static boolean checkValidId(int id) {
-    if (id >= 0 && id < DashboardUI.gservice.findAll().size()) {
-      return true;
-    } else return false;
+    return (id >= 0 && id < DashboardUI.gservice.findAll().size());
   }
 
   public static boolean isAvaible(int id) {

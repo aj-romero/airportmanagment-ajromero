@@ -83,11 +83,7 @@ public class AirPlaneUI {
   }
 
   public static boolean checkValidId(int id) {
-    if (id >= 0 && id < DashboardUI.aipservice.findAll().size()) {
-      return true;
-    } else {
-      return false;
-    }
+    return ((id >= 0) && (id < DashboardUI.aipservice.findAll().size()));
   }
 
   public static void updateAirPlane(int id) {

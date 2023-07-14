@@ -7,7 +7,6 @@ public class DashboardUI {
   static AirLineService aiservice = new AirLineService();
   static AirPlaneStateService aipsservices = new AirPlaneStateService();
   static AirPlaneService aipservice = new AirPlaneService();
-
   static DepartureGateService dgservice = new DepartureGateService();
   static GateService gservice = new GateService();
   static Scanner sc = new Scanner(System.in);
@@ -21,7 +20,9 @@ public class DashboardUI {
   }
 
   public static void showHello() {
-    System.out.println("Bienvenido a la Gestion y Asignacion de aviones en un aerpuerto");
+    System.out.printf(" | %-60s %n", "-".repeat(60));
+    System.out.printf(" | Bienvenido a la Gestion y Asignacion de aviones en un aerpuerto %n");
+    System.out.printf(" | %-60s %n", "-".repeat(60));
   }
 
   public static void showMainMenu() {
@@ -33,9 +34,6 @@ public class DashboardUI {
     System.out.printf(" | %-5d | %-20s%n", 2, "Asignacion de puertas");
     System.out.printf(" | %-5d | %-20s%n", 3, "Salir");
     System.out.printf("%n%n | %-15s ", "Ingrese el numero de la accion a realizar:");
-    // int acc = sc.nextInt();
-    // aqui validacion
-    // System.out.printf("%n%n%-10s | %-10s | %-10s%n","[A] Agregar", "[E] Editar", "[D] Eliminar");
   }
 
   public static void showMainAction() {
