@@ -18,7 +18,6 @@ public abstract class AirPlaneData {
         new AirPlane(
             new AirLine("Copa AirLines"), new AirPlaneState("en mantenimiento"), "K-101943", 300));
     airPlanes.add(
-            new AirPlane(
-                    new AirLine("Avianca"), new AirPlaneState("disponible"), "9898-BB", 100));
+        new AirPlane(new AirLine("Avianca"), new AirPlaneState("disponible"), "9898-BB", 100));
   }
 }

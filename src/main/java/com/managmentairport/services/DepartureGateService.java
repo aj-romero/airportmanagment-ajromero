@@ -5,13 +5,35 @@ import com.managmentairport.entities.DepartureGate;
 import com.managmentairport.entities.Gate;
 import java.util.List;
 
-public class DepartureGateService extends DepartureGateData implements DepartureGateCRUD {
+public class DepartureGateService extends DepartureGateData
+    implements IListActions<DepartureGate>, ICUD<DepartureGate> {
+
+  @Override
+  public DepartureGate save(DepartureGate entity) {
+    departureGates.add(entity);
+    return entity;
+  }
+
+  @Override
+  public void delete(int id) {
+    departureGates.remove(id);
+  }
+
+  @Override
+  public void update(int idx, DepartureGate entity) {
+    departureGates.set(idx, entity);
+  }
+
   @Override
   public List<DepartureGate> findAll() {
     return departureGates;
   }
 
   @Override
+  public DepartureGate find(int id) {
+    return departureGates.get(id);
+  }
+
   public DepartureGate findByGate(Gate gate) {
     DepartureGate res = null;
     for (DepartureGate departureGate : departureGates) {
@@ -31,26 +53,5 @@ public class DepartureGateService extends DepartureGateData implements Departure
       res++;
     }
     return res;
-  }
-
-  @Override
-  public DepartureGate find(int id) {
-    return departureGates.get(id);
-  }
-
-  @Override
-  public DepartureGate save(DepartureGate departureGate) {
-    departureGates.add(departureGate);
-    return departureGate;
-  }
-
-  @Override
-  public void update(DepartureGate departureGate, int idx) {
-    departureGates.set(idx, departureGate);
-  }
-
-  @Override
-  public void delete(int id) {
-    departureGates.remove(id);
   }
 }

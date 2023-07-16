@@ -4,20 +4,12 @@ import com.managmentairport.datos.AirPlaneData;
 import com.managmentairport.entities.AirPlane;
 import java.util.List;
 
-public class AirPlaneService extends AirPlaneData implements AirPlaneCRUD {
+public class AirPlaneService extends AirPlaneData
+    implements IListActions<AirPlane>, ICUD<AirPlane> {
+
   @Override
   public List<AirPlane> findAll() {
     return airPlanes;
-  }
-
-  @Override
-  public AirPlane search(String register) {
-    for (AirPlane airPlane : airPlanes) {
-      if (airPlane.getRegisterNumber().equals(register)) {
-        return airPlane;
-      }
-    }
-    return null;
   }
 
   @Override
@@ -26,13 +18,18 @@ public class AirPlaneService extends AirPlaneData implements AirPlaneCRUD {
   }
 
   @Override
-  public AirPlane save(AirPlane airPlane) {
-    airPlanes.add(airPlane);
-    return airPlane;
+  public AirPlane save(AirPlane entity) {
+    airPlanes.add(entity);
+    return entity;
   }
 
   @Override
   public void delete(int id) {
     airPlanes.remove(id);
+  }
+
+  @Override
+  public void update(int idx, AirPlane entity) {
+    airPlanes.set(idx, entity);
   }
 }

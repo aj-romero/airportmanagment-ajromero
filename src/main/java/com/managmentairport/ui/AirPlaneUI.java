@@ -94,7 +94,8 @@ public class AirPlaneUI {
     airPlane.setCapacity(UtilsUi.checkInput(DashboardUI.sc));
     airPlane.setAirLine(AirLineUI.selectAirline());
     airPlane.setState(AirPlaneStateUI.selectAirPlaneState());
-    DashboardUI.aipservice.findAll().set(id, airPlane);
+
+    DashboardUI.aipservice.update(id, airPlane);
     showMain();
   }
 

@@ -113,7 +113,7 @@ public class DepartureGatesUI {
     DepartureGate departureGate = DashboardUI.dgservice.findByGate(gate);
     int idDeGate = DashboardUI.dgservice.findIdByGate(gate);
     departureGate.setDeparture(true);
-    DashboardUI.dgservice.update(departureGate, idDeGate);
+    DashboardUI.dgservice.update(idDeGate, departureGate);
     showMainActions();
   }
 }
