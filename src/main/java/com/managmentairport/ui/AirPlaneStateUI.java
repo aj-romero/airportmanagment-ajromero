@@ -2,8 +2,6 @@ package com.managmentairport.ui;
 
 import com.managmentairport.entities.AirPlaneState;
 import com.managmentairport.services.AirPlaneStateService;
-
-
 import java.util.List;
 
 public class AirPlaneStateUI {

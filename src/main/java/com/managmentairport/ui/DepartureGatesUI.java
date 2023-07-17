@@ -4,12 +4,11 @@ import com.managmentairport.entities.AirPlane;
 import com.managmentairport.entities.DepartureGate;
 import com.managmentairport.entities.Gate;
 import com.managmentairport.services.DepartureGateService;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepartureGatesUI {
-  static DepartureGateService dgservice =  new DepartureGateService();
+  static DepartureGateService dgservice = new DepartureGateService();
 
   public static void setValues() {
     dgservice.save(

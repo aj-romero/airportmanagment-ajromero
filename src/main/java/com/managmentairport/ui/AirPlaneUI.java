@@ -2,11 +2,11 @@ package com.managmentairport.ui;
 
 import com.managmentairport.entities.AirPlane;
 import com.managmentairport.services.AirPlaneService;
-
 import java.util.List;
 
 public class AirPlaneUI {
   static AirPlaneService aipservice = new AirPlaneService();
+
   public static void printAll(List<AirPlane> airPlanes) {
     System.out.printf(
         "%n%-5s | %-20s | %-20s | %-20s | %-10s%n",

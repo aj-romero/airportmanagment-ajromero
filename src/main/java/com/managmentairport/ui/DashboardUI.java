@@ -1,6 +1,5 @@
 package com.managmentairport.ui;
 
-import com.managmentairport.entities.AirLine;
 import com.managmentairport.services.*;
 import java.util.Scanner;
 

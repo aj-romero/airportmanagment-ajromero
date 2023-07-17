@@ -2,12 +2,11 @@ package com.managmentairport.ui;
 
 import com.managmentairport.entities.Gate;
 import com.managmentairport.services.GateService;
-import com.managmentairport.services.IListActions;
-
 import java.util.List;
 
 public class GateUI {
   static GateService gservice = new GateService();
+
   public static Gate selectGate() {
     int id = -1;
     while (!checkValidId(id)) {
