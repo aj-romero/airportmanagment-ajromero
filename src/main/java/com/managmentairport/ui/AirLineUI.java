@@ -2,10 +2,11 @@ package com.managmentairport.ui;
 
 import com.managmentairport.entities.AirLine;
 import com.managmentairport.services.AirLineService;
+import com.managmentairport.services.IListActions;
 import java.util.List;
 
 public class AirLineUI {
-  static AirLineService aiservice;
+  static IListActions<AirLine> aiservice = new AirLineService();
 
   public static void printAll(List<AirLine> airLines) {
     System.out.printf("%n%-5s | %-20s %n", "ID", "Aerolinea");

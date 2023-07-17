@@ -4,7 +4,6 @@ import com.managmentairport.services.*;
 import java.util.Scanner;
 
 public class DashboardUI {
-
   static Scanner sc = new Scanner(System.in);
 
   public static void inicio() {

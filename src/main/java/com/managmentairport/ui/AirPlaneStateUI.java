@@ -2,11 +2,12 @@ package com.managmentairport.ui;
 
 import com.managmentairport.entities.AirPlaneState;
 import com.managmentairport.services.AirPlaneStateService;
+import com.managmentairport.services.IListActions;
 import java.util.List;
 
 public class AirPlaneStateUI {
 
-  static AirPlaneStateService aipsservice = new AirPlaneStateService();
+  static IListActions<AirPlaneState> aipsservice = new AirPlaneStateService();
 
   public static AirPlaneState selectAirPlaneState() {
     int idAirPlaneState = -1;
