@@ -3,16 +3,19 @@ package com.managmentairport.ui;
 import com.managmentairport.entities.AirPlane;
 import com.managmentairport.entities.DepartureGate;
 import com.managmentairport.entities.Gate;
+import com.managmentairport.services.DepartureGateService;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepartureGatesUI {
+  static DepartureGateService dgservice =  new DepartureGateService();
 
   public static void setValues() {
-    DashboardUI.dgservice.save(
-        new DepartureGate(DashboardUI.aipservice.find(0), DashboardUI.gservice.find(0), false));
-    DashboardUI.dgservice.save(
-        new DepartureGate(DashboardUI.aipservice.find(1), DashboardUI.gservice.find(3), false));
+    dgservice.save(
+        new DepartureGate(AirPlaneUI.aipservice.find(0), GateUI.gservice.find(0), false));
+    dgservice.save(
+        new DepartureGate(AirPlaneUI.aipservice.find(1), GateUI.gservice.find(3), false));
   }
 
   public static void showDepartureGatesState() {
@@ -20,7 +23,7 @@ public class DepartureGatesUI {
     System.out.println("Las puertas disponibles y ocupadas son las siguientes");
     System.out.printf("%n%-5s | %-20s | %-10s %n", "ID", "Puerta", "Estado");
     System.out.println("___________________________________________");
-    List<Gate> gates = DashboardUI.gservice.findAll();
+    List<Gate> gates = GateUI.gservice.findAll();
     List<Gate> g = noEnableGates();
 
     for (int i = 0; i < gates.size(); i++) {
@@ -32,7 +35,7 @@ public class DepartureGatesUI {
 
   public static List<Gate> noEnableGates() {
     List<Gate> gates = new ArrayList<>();
-    List<DepartureGate> departureGates = DashboardUI.dgservice.findAll();
+    List<DepartureGate> departureGates = dgservice.findAll();
     for (int k = 0; k < departureGates.size(); k++) {
       if (!departureGates.get(k).isDeparture()) {
         gates.add(departureGates.get(k).getGate());
@@ -43,7 +46,7 @@ public class DepartureGatesUI {
 
   public static List<AirPlane> noEnableAirPlane() {
     List<AirPlane> airPlanes = new ArrayList<>();
-    List<DepartureGate> departureGates = DashboardUI.dgservice.findAll();
+    List<DepartureGate> departureGates = dgservice.findAll();
     for (int k = 0; k < departureGates.size(); k++) {
       if (!departureGates.get(k).isDeparture()) {
         airPlanes.add(departureGates.get(k).getAirPlane());
@@ -93,7 +96,7 @@ public class DepartureGatesUI {
     departureGate.setGate(GateUI.selectGate());
     departureGate.setAirPlane(AirPlaneUI.selectAirPlane());
     departureGate.setDeparture(false);
-    DashboardUI.dgservice.save(departureGate);
+    dgservice.save(departureGate);
     showMainActions();
   }
 
@@ -109,11 +112,11 @@ public class DepartureGatesUI {
         System.out.printf("%n%n | %-15s %n", "Verifique el numero ingresado!");
       }
     }
-    Gate gate = DashboardUI.gservice.find(id);
-    DepartureGate departureGate = DashboardUI.dgservice.findByGate(gate);
-    int idDeGate = DashboardUI.dgservice.findIdByGate(gate);
+    Gate gate = GateUI.gservice.find(id);
+    DepartureGate departureGate = dgservice.findByGate(gate);
+    int idDeGate = dgservice.findIdByGate(gate);
     departureGate.setDeparture(true);
-    DashboardUI.dgservice.update(idDeGate, departureGate);
+    dgservice.update(idDeGate, departureGate);
     showMainActions();
   }
 }

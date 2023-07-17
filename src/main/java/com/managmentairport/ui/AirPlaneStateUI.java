@@ -1,22 +1,27 @@
 package com.managmentairport.ui;
 
 import com.managmentairport.entities.AirPlaneState;
+import com.managmentairport.services.AirPlaneStateService;
+
+
 import java.util.List;
 
 public class AirPlaneStateUI {
+
+  static AirPlaneStateService aipsservice = new AirPlaneStateService();
 
   public static AirPlaneState selectAirPlaneState() {
     int idAirPlaneState = -1;
     while (!checkValidId(idAirPlaneState)) {
       System.out.printf(
           "%n%n | %-15s %n", "De la siguiente lista favor seleccione el estado del avion");
-      printAll(DashboardUI.aipsservices.findAll());
+      printAll(aipsservice.findAll());
       idAirPlaneState = UtilsUi.checkInput(DashboardUI.sc);
       if (!checkValidId(idAirPlaneState)) {
         System.out.printf("%n%n | %-15s %n", "Verifique el numero ingresado!");
       }
     }
-    return DashboardUI.aipsservices.find(idAirPlaneState);
+    return aipsservice.find(idAirPlaneState);
   }
 
   public static void printAll(List<AirPlaneState> airPlaneStates) {
@@ -28,6 +33,6 @@ public class AirPlaneStateUI {
   }
 
   public static boolean checkValidId(int id) {
-    return (id >= 0 && id < DashboardUI.aipsservices.findAll().size());
+    return (id >= 0 && id < aipsservice.findAll().size());
   }
 }

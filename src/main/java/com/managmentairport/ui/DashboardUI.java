@@ -1,14 +1,11 @@
 package com.managmentairport.ui;
 
+import com.managmentairport.entities.AirLine;
 import com.managmentairport.services.*;
 import java.util.Scanner;
 
 public class DashboardUI {
-  static AirLineService aiservice = new AirLineService();
-  static AirPlaneStateService aipsservices = new AirPlaneStateService();
-  static AirPlaneService aipservice = new AirPlaneService();
-  static DepartureGateService dgservice = new DepartureGateService();
-  static GateService gservice = new GateService();
+
   static Scanner sc = new Scanner(System.in);
 
   public static void inicio() {

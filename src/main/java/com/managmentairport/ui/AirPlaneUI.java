@@ -1,9 +1,12 @@
 package com.managmentairport.ui;
 
 import com.managmentairport.entities.AirPlane;
+import com.managmentairport.services.AirPlaneService;
+
 import java.util.List;
 
 public class AirPlaneUI {
+  static AirPlaneService aipservice = new AirPlaneService();
   public static void printAll(List<AirPlane> airPlanes) {
     System.out.printf(
         "%n%-5s | %-20s | %-20s | %-20s | %-10s%n",
@@ -26,7 +29,7 @@ public class AirPlaneUI {
   }
 
   public static void showMain() {
-    printAll(DashboardUI.aipservice.findAll());
+    printAll(aipservice.findAll());
     printMenuCRUD();
     int acc = UtilsUi.checkInput(DashboardUI.sc);
     if (acc > 0 && acc < 6) {
@@ -65,7 +68,7 @@ public class AirPlaneUI {
     airPlane.setCapacity(UtilsUi.checkInput(DashboardUI.sc));
     airPlane.setAirLine(AirLineUI.selectAirline());
     airPlane.setState(AirPlaneStateUI.selectAirPlaneState());
-    DashboardUI.aipservice.save(airPlane);
+    aipservice.save(airPlane);
     showMain();
   }
 
@@ -83,11 +86,11 @@ public class AirPlaneUI {
   }
 
   public static boolean checkValidId(int id) {
-    return ((id >= 0) && (id < DashboardUI.aipservice.findAll().size()));
+    return ((id >= 0) && (id < aipservice.findAll().size()));
   }
 
   public static void updateAirPlane(int id) {
-    AirPlane airPlane = DashboardUI.aipservice.find(id);
+    AirPlane airPlane = aipservice.find(id);
     System.out.printf("%n | %-15s %n", "Ingresar el numero de registro del avion");
     airPlane.setRegisterNumber(DashboardUI.sc.nextLine());
     System.out.printf(" | %-15s %n", "Ingresar la capacidad de pasajeros del avion");
@@ -95,7 +98,7 @@ public class AirPlaneUI {
     airPlane.setAirLine(AirLineUI.selectAirline());
     airPlane.setState(AirPlaneStateUI.selectAirPlaneState());
 
-    DashboardUI.aipservice.update(id, airPlane);
+    aipservice.update(id, airPlane);
     showMain();
   }
 
@@ -110,7 +113,7 @@ public class AirPlaneUI {
       }
     }
 
-    AirPlane airPlane = DashboardUI.aipservice.find(id);
+    AirPlane airPlane = aipservice.find(id);
     System.out.printf(
         "%n%-5s | %-20s | %-20s | %-20s | %-10s%n",
         "ID", "Num Registro", "Aerolinea", "Capacidad(Pasajeros)", "Estado");
@@ -127,7 +130,7 @@ public class AirPlaneUI {
       System.out.printf(
           "%n | %-15s %s exitosamente!",
           "Se elimino el avion con registro  ", airPlane.getRegisterNumber());
-      DashboardUI.aipservice.delete(id);
+      aipservice.delete(id);
       showMain();
     } else {
       showMain();
@@ -139,28 +142,28 @@ public class AirPlaneUI {
     while (!checkValidId(id)) {
       System.out.printf(
           "%n%n | %-15s %n", "De la siguiente lista favor seleccione el ID del avion a asignar");
-      printAll(DashboardUI.aipservice.findAll());
+      printAll(aipservice.findAll());
       id = UtilsUi.checkInput(DashboardUI.sc);
       if (isAvaible(id)) {
         id = -1;
         System.out.printf(
             "%n | %-15s %n",
             "Verifique el numero ingresado! el avion ya ha sido asignado a una puerta");
-      } else if (!DashboardUI.aipservice.find(id).getState().getStateName().equals("disponible")) {
+      } else if (!aipservice.find(id).getState().getStateName().equals("disponible")) {
         id = -1;
         System.out.printf(
             "%n | %-15s %n",
             "Verifique el numero ingresado! el avion no esta disponible para ser asignado");
       }
     }
-    return DashboardUI.aipservice.find(id);
+    return aipservice.find(id);
   }
 
   public static boolean isAvaible(int id) {
     List<AirPlane> a = DepartureGatesUI.noEnableAirPlane();
     boolean res = false;
-    for (int i = 0; i < DashboardUI.aipservice.findAll().size(); i++) {
-      if (a.contains(DashboardUI.aipservice.find(i)) && i == id) res = true;
+    for (int i = 0; i < aipservice.findAll().size(); i++) {
+      if (a.contains(aipservice.find(i)) && i == id) res = true;
     }
     return res;
   }
